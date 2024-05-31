@@ -13,7 +13,7 @@ if __name__ == "__main__":
     print(source_dir)
     title = f"{_project_name} {_project_version}"
     build_softname = (f"{_project_name}.exe" if os.name == "nt" else f"{_project_name}")
-    script = os.path.join(source_dir, "script", "package.py")
+    script = os.path.join(source_dir, "script", "output-package.py")
     linuxdeployqt_path = os.path.join(source_dir, "script", "linuxdeployqt-continuous-x86_64.AppImage")
     if not os.path.isfile(script) or not os.path.exists(script):
         sys.exit(0)
