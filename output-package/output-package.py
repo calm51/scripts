@@ -6,6 +6,7 @@ import subprocess
 import time
 import glob
 
+_project_dir_name = "name"
 _project_name = "name"
 _project_version = "v1.0"
 if __name__ == "__main__":
@@ -21,12 +22,12 @@ if __name__ == "__main__":
     if os.name == "nt":
         if "mingw" in sys.argv[0]:
             _mingw_or_msvc = "win32mingw"
-            build_dirname = f"build-{_project_name}-Desktop_Qt_5_15_2_MinGW_32_bit-Release"
+            build_dirname = f"build-{_project_dir_name}-Desktop_Qt_5_15_2_MinGW_32_bit-Release"
         else:
             _mingw_or_msvc = "win32msvc"
-            build_dirname = f"build-{_project_name}-Desktop_Qt_5_15_2_MSVC2019_32bit-Release"
+            build_dirname = f"build-{_project_dir_name}-Desktop_Qt_5_15_2_MSVC2019_32bit-Release"
     else:
-        build_dirname = f"build-{_project_name}-Desktop_Qt_5_15_2_GCC_64bit-Release"
+        build_dirname = f"build-{_project_dir_name}-Desktop_Qt_5_15_2_GCC_64bit-Release"
     root_dirpath = os.path.split(source_dir)[0]
     lib_path = os.path.split(root_dirpath)[0]
     if os.path.isdir(os.path.join(lib_path, "lib")):
@@ -37,7 +38,7 @@ if __name__ == "__main__":
     build_softpath = os.path.join(build_dirpath, build_softname)
     if (not os.path.isfile(build_softpath) or not os.path.exists(build_softpath)):
         sys.exit(0)
-    package_dirpath = os.path.join(root_dirpath, "package")
+    package_dirpath = os.path.join(source_dir, "output", _project_name)
     if os.path.isdir(package_dirpath):
         shutil.rmtree(package_dirpath)
     time.sleep(2)
