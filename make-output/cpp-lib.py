@@ -82,8 +82,10 @@ if __name__ == "__main__":
             _build_output.append(os.path.join(_build_path, f"lib{_project_name}.dll"))
             # _build_output.append(os.path.join(_build_path, f"lib{_project_name}.dll.a"))
     elif _platform in ("android",):
-        _build_output.append(
-            os.path.join(_build_path, "android-build", "libs", "armeabi-v7a", f"lib{_project_name}_armeabi-v7a.so"))
+        _path = os.path.join(_build_path, "android-build", "libs", "armeabi-v7a", f"lib{_project_name}_armeabi-v7a.so")
+        if not os.path.isfile(_path):
+            _path = os.path.join(_build_path, f"lib{_project_name}.so")
+        _build_output.append(_path)
     else:
         raise ValueError(str(_platform))
     for i in _build_output:
