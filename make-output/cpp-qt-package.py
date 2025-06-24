@@ -72,7 +72,7 @@ export QML2_IMPORT_PATH=/home/m/Qt/5.15.2/gcc_64/qml:$QML2_IMPORT_PATH
         with open(os.path.join(tool_linuxdeployqt_project_path, "linux.desktop"), "r", encoding="utf8") as f1:
             with open(os.path.join(package_dirpath, f"{_project_name}.desktop"), "w", encoding="utf8") as f2:
                 f2.write(f1.read().replace("application", _project_name))
-        shutil.copy(os.path.join(_resource_path, "icon", "main.ico"),
+        shutil.copy(os.path.join(_resource_path, "image", "main.ico"),
                     os.path.join(package_dirpath, f"{_project_name}.ico"))
     _li = []
     if os.name == "nt":
